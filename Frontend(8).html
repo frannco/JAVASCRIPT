@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   <title>Prehľad produkcie</title>
+    <style>
+        .hashlab-table {
+            border: none;
+            border-collapse: separate;
+            border-spacing: 0;
+            font: normal 13px Arial, sans-serif;
+        }
+        
+        .hashlab-table thead th {
+            background-color: #F5F5F5;
+            border: none;
+            padding: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 1px #fff;
+            white-space: nowrap;
+        }
+        
+        .hashlab-table tbody td {
+            border-bottom: solid 1px #DDEFEF;
+            padding: 10px;
+            text-shadow: 1px 1px 1px #fff;
+            white-space: nowrap;
+        }
+        
+        .hashlab-wrapper {
+            position: relative;
+        }
+
+        .hashlab-scroller {
+            margin-left: 300px;
+            overflow-x: scroll;
+            overflow-y: visible;
+            padding-bottom: 5px;
+            width: 250px;
+        }
+
+        .hashlab-table .hashlab-sticky-col {
+            border-left: solid 1px #DDEFEF;
+            left: 0;
+            position: absolute;
+            top: auto;
+            width: 180px;
+        }
+
+        .hashlab-table .hashlab-sticky-col2 {
+            border-right: solid 1px #DDEFEF;
+            left: 180px;
+            position: absolute;
+            top: auto;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prehľad produkcie</h1>
+    <div>
+        <input type="date" name="">
+        <input type="date" name="">
+        <select name="ZbalenaStruktura" id="ZbalenaStruktura">
+            <option value="">Zbalená štruktúra</option>
+        </select>
+        <select name="RozbalenaStruktura" id="RozbalenaStruktura">
+            <option value="">Rozbalená štruktúra</option>
+        </select>
+        <select name="Kvartal" id="Kvartal">
+            <option value="">Kvartál</option>
+            <option value="">1.Q</option>
+            <option value="">2.Q</option>
+            <option value="">3.Q</option>
+            <option value="">4.Q</option>
+        </select>
+        <select name="Odvetvie" id="Odvetvie">
+            <option value="">Odvetvie</option>
+            <option value="">Priemysel</option>
+            <option value="">Obchod</option>
+            <option value="">Služby</option>
+        </select>
+        <br><br>
+        <select name="Funkcia" id="Funkcia">
+            <option value="">Funkcia</option>
+            <option value="">RR</option>
+            <option value="">RA</option>
+            <option value="">OFS</option>
+        </select>
+        <select name="aktívny" id="aktívny">
+            <option value="">Iba aktívny</option>
+            <option value="">Neaktívny</option>
+        </select>
+        <select name="aktívny" id="aktívny">
+            <option value="">Nuloví Áno</option>
+            <option value="">Nuloví Nie</option>
+        </select>
+        <button>Export</button>
+        <label>Format</label>
+        <select name="Format" id="Excel">
+            <option value="">Excel</option>
+            <option value="">PDF</option>
+        </select>
+        <br></br>
+        <label>Zobrazené stĺpce: 6</label>
+    </div>
+    <br>
+    <div class="hashlab-wrapper">
+        <div class="hashlab-scroller">
+            <table class="table table-bordered hashlab-table">
+                <thead>
+                    <tr>
+                        <th class="hashlab-sticky-col"><b>ID</b></th>
+                        <th class="hashlab-sticky-col2">SPOL</th>
+                        <th onclick="showTable('TableNested1')">SPOL1</th>
+                        <th name="TableNested1" style="display:none" class="detailTable">SPOL1 - detail</th>
+                        <th onclick="showTable('TableNested2')"> SPOL2</th>
+                        <th name="TableNested2" style="display:none" class="detailTable">SPOL2 - detail</th>
+                        <th onclick="showTable('TableNested3')">SPOL3</th>
+                        <th name="TableNested3" style="display:none" class="detailTable">SPOL3 - detail</th>
+                        <th onclick="showTable('TableNested4')">SPOL4</th>
+                        <th name="TableNested4" style="display:none" class="detailTable">SPOL4 - detail</th>
+                    </tr> 
+                </thead>
+            <tbody>       
+                <tr>
+                    <td class="hashlab-sticky-col"><b>Meno</b></td>
+                    <td class="hashlab-sticky-col2">Peter Novak</td>
+                    <td>Rudolf Ducky</td>
+                    <td name="TableNested1" style="display:none">Rudolf Ducky2 spol1 detail</td>
+                    <td>Peter Simoncic</td>
+                    <td name="TableNested2" style="display:none">Peter Simoncic2 spol2 detail</td>
+                    <td>Jozef Barmos</td>
+                    <td name="TableNested3" style="display:none">Jozef BArmos2 spol3 detail</td>
+                    <td>Ladislav Jurkemik</td>
+                    <td name="TableNested4" style="display:none">Ladislav Jurkemik2 spol4 detail</td>
+                </tr>
+                <tr>
+                    <td class="hashlab-sticky-col"><b>Funkcia</b></td>
+                    <td class="hashlab-sticky-col2">RR</td>
+                <td>RA</td>
+                <td name="TableNested1" style="display:none">RA spol1 detail </td>
+                <td>OFS</td>
+                <td name="TableNested2" style="display:none">OFS spol2 detail </td>
+                <td>RR</td>
+                <td name="TableNested3" style="display:none">RR spol3 detail </td>
+                <td>RA</td>
+                <td name="TableNested4" style="display:none">RA spol4 detail </td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col"><b>Región</b></td>
+                <td class="hashlab-sticky-col2">Západ</td>
+                <td>Vychod</td>
+                <td name="TableNested1" style="display:none">Vychod spol1 detail</td>
+                <td>Sever</td>
+                <td name="TableNested2" style="display:none">Sever spol2 detail</td>
+                <td>Juh</td>
+                <td name="TableNested3" style="display:none">Juh spol3 detail</td>
+                <td>Juhovychod</td>
+                <td name="TableNested4" style="display:none">Juhovychod spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col"><b>Pobočka</b></td>
+                <td class="hashlab-sticky-col2">Bratislava</td>
+                <td>Nitra</td>
+                <td name="TableNested1" style="display:none">Nitra spol1 detail</td>
+                <td>Trnava</td>
+                <td name="TableNested2" style="display:none">Trnava spol2 detail</td>
+                <td>Zilina</td>
+                <td name="TableNested3" style="display:none">Zilina spol3 detail</td>
+                <td>Poprad</td>
+                <td name="TableNested4" style="display:none">Poprad spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Total app</td>
+                <td class="hashlab-sticky-col2">5 778 757</td>
+                <td>3 578 675</td>
+                <td name="TableNested1" style="display:none">3 578 675 spol1 detail</td>
+                <td>4 323 533</td>
+                <td name="TableNested2" style="display:none">4 323 533 spol2 detail</td>
+                <td>6 875 122</td>
+                <td name="TableNested3" style="display:none">6 875 122 spol3 detail</td>
+                <td>2 889 247</td>
+                <td name="TableNested4" style="display:none">2 889 247 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col"><b>Život</b></td>
+                <td class="hashlab-sticky-col2">Akceptovane</td>
+                <td>1 653 080</td>
+                <td>2 353 785</td>
+                <td name="TableNested1" style="display:none">2 353 785 spol1 detail</td>
+                <td>1 454 380</td>
+                <td name="TableNested2" style="display:none">1 454 380 spol2 detail</td>
+                <td>1 954 095</td>
+                <td name="TableNested3" style="display:none">1 954 095 spol3 detail</td>
+                <td>3 763 182</td>
+                <td name="TableNested4" style="display:none">3 763 182 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Akceptované PPP</td>
+                <td class="hashlab-sticky-col2">506</td>
+                <td>605</td>
+                <td name="TableNested1" style="display:none">605 spol1 detail</td>
+                <td>730</td>
+                <td name="TableNested2" style="display:none">730 spol2 detail</td>
+                <td>877</td>
+                <td name="TableNested3" style="display:none">877 spol3 detail</td>
+                <td>955</td>
+                <td name="TableNested4" style="display:none">955 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Storno kmeň provízne</td>
+                <td class="hashlab-sticky-col2">165 142</td>
+                <td>235 643</td>
+                <td name="TableNested1" style="display:none">235 643 spol1 detail</td>
+                <td>176 854</td>
+                <td name="TableNested2" style="display:none">175 854 spol2 detail</td>
+                <td>135 442</td>
+                <td name="TableNested3" style="display:none">135 442 spol3 detail</td>
+                <td>185 622</td>
+                <td name="TableNested4" style="display:none">185 622 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Storno nové provízne</td>
+                <td class="hashlab-sticky-col2">56 952</td>
+                <td>87 657</td>
+                <td name="TableNested1" style="display:none">87 657 spol1 detail</td>
+                <td>23 053</td>
+                <td name="TableNested2" style="display:none">23 053 spol2 detail</td>
+                <td>66 662</td>
+                <td name="TableNested3" style="display:none">66 662 spol3 detail</td>
+                <td>86 993</td>
+                <td name="TableNested4" style="display:none">86 993 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Total AP</td>
+                <td class="hashlab-sticky-col2">1 431 438</td>
+                <td>2 451 736</td>
+                <td name="TableNested1" style="display:none">2 451 736 spol1 detail</td>
+                <td>3 654 937</td>
+                <td name="TableNested2" style="display:none">3 654 937 spol2 detail</td>
+                <td>2 656 122</td>
+                <td name="TableNested3" style="display:none">2 656 122 spol3 detail</td>
+                <td>3 741 654</td>
+                <td name="TableNested4" style="display:none">3 741 654 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Total APP</td>
+                <td class="hashlab-sticky-col2">1 333 459</td>
+                <td>2 423 111</td>
+                <td name="TableNested1" style="display:none">2 423 111 spol1 detail</td>
+                <td>4 623 223</td>
+                <td name="TableNested2" style="display:none">4 623 223 spol2 detail</td>
+                <td>5 223 654</td>
+                <td name="TableNested3" style="display:none">5 223 654 spol3 detail</td>
+                <td>3 111 747</td>
+                <td name="TableNested4" style="display:none">3 111 747 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col"><b>Neživot spolu</b></td>
+                <td class="hashlab-sticky-col2">Nový kmeň</td>
+                <td>14 278 910</td>
+                <td>22 389 333</td>
+                <td name="TableNested1" style="display:none">22 389 333 spol1 detail</td>
+                <td>18 687 411</td>
+                <td name="TableNested2" style="display:none">18 687 411 spol2 detail</td>
+                <td>16 778 321</td>
+                <td name="TableNested3" style="display:none">16 778 321 spol3 detail</td>
+                <td>17 378 665</td>
+                <td name="TableNested4" style="display:none">17 378 665 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Storno</td>
+                <td class="hashlab-sticky-col2">569 665</td>
+                <td>788 222</td>
+                <td name="TableNested1" style="display:none">788 222 spol1 detail</td>
+                <td>436 436</td>
+                <td name="TableNested2" style="display:none">436 436 spol2 detail</td>
+                <td>365 123</td>
+                <td name="TableNested3" style="display:none">365 123 spol3 detail</td>
+                <td>477 311</td>
+                <td name="TableNested4" style="display:none">477 311 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Total AP</td>
+                <td class="hashlab-sticky-col2">13 709 246</td>
+                <td>16 633 333</td>
+                <td name="TableNested1" style="display:none">16 633 333 spol1 detail</td>
+                <td>17 654 321</td>
+                <td name="TableNested2" style="display:none">17 654 321 spol2 detail</td>
+                <td>15 555 223</td>
+                <td name="TableNested3" style="display:none">15 555 223 spol3 detail</td>
+                <td>18 966 744</td>
+                <td name="TableNested4" style="display:none">18 966 744 spol4 detail</td> 
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Total APP</td>
+                <td class="hashlab-sticky-col2">56 952</td>
+                <td>76 477</td>
+                <td name="TableNested1" style="display:none">76 477 spol1 detail</td>
+                <td>35 666</td>
+                <td name="TableNested2" style="display:none">35 666 spol2 detail</td>
+                <td>42 554</td>
+                <td name="TableNested3" style="display:none">42 554 spol3 detail</td>
+                <td>26 774</td>
+                <td name="TableNested4" style="display:none">26 774 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Spolu total AP</td>
+                <td class="hashlab-sticky-col2">1 431 438</td>
+                <td>1 877 666</td>
+                <td name="TableNested1" style="display:none">1 877 666 spol1 detail</td>
+                <td>1 350 877</td>
+                <td name="TableNested2" style="display:none">1 350 877 spol2 detail</td>
+                <td>2 655 441</td>
+                <td name="TableNested3" style="display:none">2 655 441 spol3 detail</td>
+                <td>2 987 544</td>
+                <td name="TableNested4" style="display:none">2 987 544 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Spolu total APP</td>
+                <td class="hashlab-sticky-col2">1 323 459</td>
+                <td>2 755 664</td>
+                <td name="TableNested1" style="display:none">2 755 664 spol1 detail</td>
+                <td>1 788 554</td>
+                <td name="TableNested2" style="display:none">1 788 554 spol2 detail</td>
+                <td>2 654 323</td>
+                <td name="TableNested3" style="display:none">2 654 323 spol3 detail</td>
+                <td>1 877 666</td>
+                <td name="TableNested4" style="display:none">1 877 666 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Spolu kmeň</td>
+                <td class="hashlab-sticky-col2">1 431 438</td>
+                <td>1 888 322</td>
+                <td name="TableNested1" style="display:none">1 888 322 spol1 detail</td>
+                <td>2 655 555</td>
+                <td name="TableNested2" style="display:none">2 655 555 spol2 detail</td>
+                <td>2 223 777</td>
+                <td name="TableNested3" style="display:none">2 223 777 spol3 detail</td>
+                <td>4 222 654</td>
+                <td name="TableNested4" style="display:none">4 222 654 spol4 detail</td>
+            </tr>
+            <tr>
+                <td class="hashlab-sticky-col">Spolu spolu storno</td>
+                <td class="hashlab-sticky-col2">1 323 459</td>
+                <td>2 533 666</td>
+                <td name="TableNested1" style="display:none">2 533 666 spol1 detail</td>
+                <td>4 444 333</td>
+                <td name="TableNested2" style="display:none">4 444 333 spol2 detail</td>
+                <td>3 686 999</td>
+                <td name="TableNested3" style="display:none">3 686 999 spol3 detail</td>
+                <td>2 434 664</td>
+                <td name="TableNested4" style="display:none">2 434 664 spol4 detail</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
